@@ -1,4 +1,6 @@
-abstract class Metric
-end
+module Conan
+  abstract class Metric
+  end
 
-require "metrics/**"
+  require "metrics/**"
+end

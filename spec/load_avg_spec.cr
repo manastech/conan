@@ -1,7 +1,7 @@
 require "spec"
 require "../metric"
 
-class LoadAvgTest < LoadAvg
+class LoadAvgTest < Conan::LoadAvg
   def initialize(@uptime)
   end
 
