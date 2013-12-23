@@ -1,11 +1,15 @@
 require "socket"
 require "inifile"
 require "metric"
+require "metric_collector"
+
+include Conan
 
 config = IniFile.load(File.read("conan.ini"))
 
 collector = MetricCollector.new
 collector.add(LoadAvg.new)
+collector.add(CpuStats.new)
 values = collector.collect
 
 config[""]["graphite"] =~ /(.+)\:(\d+)/
