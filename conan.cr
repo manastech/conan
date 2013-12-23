@@ -1,10 +1,6 @@
 require "socket"
 require "inifile"
-
-abstract class Metric
-end
-
-require "metrics/**"
+require "metric"
 
 class MetricCollector
   def initialize
@@ -40,4 +36,5 @@ TCPSocket.open(graphite_host, graphite_port) do |sock|
     sock.puts "#{config[""]["prefix"]}.#{key} #{value} #{ts}"
   end
 end
+
 
