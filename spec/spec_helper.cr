@@ -1,5 +1,5 @@
 require "spec"
-require "../metric"
+require "../src/metric"
 
 def collect(metric)
   values = {} of String => String
