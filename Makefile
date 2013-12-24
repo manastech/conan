@@ -1,4 +1,4 @@
-METRIC_SOURCES := $(shell find . -name '*.cr')
+SOURCES := $(shell find src -name '*.cr')
 
-conan: conan.cr $(METRIC_SOURCES)
-	@crystal conan.cr
+conan: $(SOURCES)
+	@crystal src/conan.cr

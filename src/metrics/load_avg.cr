@@ -1,4 +1,6 @@
 class LoadAvg < Metric
+  register "load_avg"
+
   def collect(values)
     output = system2("uptime")
     output[0].chomp =~ /([\d\.]+)[^\d]+([\d\.]+)[^\d]+([\d\.]+)$/

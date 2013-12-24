@@ -8,8 +8,9 @@ include Conan
 config = IniFile.load(File.read("conan.ini"))
 
 collector = MetricCollector.new
-collector.add(LoadAvg.new)
-collector.add(CpuStats.new)
+Metric.all.each do |metric_class|
+  collector.add(metric_class.new)
+end
 values = collector.collect
 
 config[""]["graphite"] =~ /(.+)\:(\d+)/

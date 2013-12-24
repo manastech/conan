@@ -1,4 +1,6 @@
 class CpuStats < Metric
+  register "cpu"
+
   def collect(values)
     File.read_lines("/proc/stat").each do |line|
       if line.starts_with?("cpu ")
