@@ -8,8 +8,12 @@ include Conan
 config = IniFile.load(File.read("conan.ini"))
 
 collector = MetricCollector.new
-Metric.all.each do |metric_class|
-  collector.add(metric_class.new)
+config.each do |section, params|
+  unless section.empty?
+    metric_class = Metric[section]
+    abort "Unknown metric #{section}" unless metric_class
+    collector.add(metric_class.new(params))
+  end
 end
 values = collector.collect
 
